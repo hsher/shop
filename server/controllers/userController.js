@@ -53,13 +53,9 @@ class UserController {
   }
 
   async check(req, res, next) {
-    const {id} = req.query
+    const token = generateJwt(req.user.id, req.user.email, req.user.role)
 
-    if (!id) {
-      return next(ApiError.badRequest('No ID'))
-    }
-
-    res.json(id)
+    return res.json({token})
   }
 }
 
