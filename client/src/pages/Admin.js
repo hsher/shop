@@ -1,11 +1,11 @@
 import React from 'react';
 
-const App = () => {
+const Admin = () => {
   return (
     <div>
-      Working
+      Admin
     </div>
   )
 }
 
-export default App;
+export default Admin;
