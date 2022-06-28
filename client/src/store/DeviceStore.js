@@ -37,11 +37,11 @@ export default class DeviceStore {
     return this._types
   }
 
-  get brand() {
+  get brands() {
     return this._brands
   }
 
-  get device() {
+  get devices() {
     return this._devices
   }
 }
