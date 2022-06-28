@@ -18,6 +18,7 @@ export default class DeviceStore {
       {id: 3, name: 'Iphone 12 pro', price: 25000, rating: 5, img: 'https://via.placeholder.com/200x100'},
       {id: 4, name: 'Iphone 12 pro', price: 25000, rating: 5, img: 'https://via.placeholder.com/200x100'},
     ]
+    this._selectedType = {}
     makeAutoObservable(this)
   }
 
@@ -33,6 +34,10 @@ export default class DeviceStore {
     this._devices = devices
   }
 
+  setSelectedType(type) {
+    return this._selectedType = type
+  }
+
   get types() {
     return this._types
   }
@@ -43,5 +48,9 @@ export default class DeviceStore {
 
   get devices() {
     return this._devices
+  }
+
+  get selectedType() {
+    return this._selectedType
   }
 }
