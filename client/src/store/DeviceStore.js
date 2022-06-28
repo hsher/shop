@@ -5,6 +5,8 @@ export default class DeviceStore {
     this._types = [
       {id: 1, name: 'Холодильники'},
       {id: 2, name: 'Смартфоны'},
+      {id: 3, name: 'Ноутбуки'},
+      {id: 4, name: 'Телевизоры'},
     ]
     this._brands = [
       {id: 1, name: 'Samsung'},
@@ -31,7 +33,7 @@ export default class DeviceStore {
     this._devices = devices
   }
 
-  get type() {
+  get types() {
     return this._types
   }
 
