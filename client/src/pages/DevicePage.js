@@ -4,6 +4,14 @@ import bigStar from '../assets/star.png';
 
 const DevicePage = () => {
   const device = {id: 1, name: 'Iphone 12 pro', price: 25000, rating: 5, img: 'https://via.placeholder.com/200x100'}
+  const description = [
+    {id: 1, title: 'Оперативная память', description: '5 Гб'},
+    {id: 2, title: 'Камера', description: '12 мп'},
+    {id: 3, title: 'Процессор', description: 'Пентиум 3'},
+    {id: 4, title: 'Кол-во ядер', description: '2'},
+    {id: 5, title: 'Аккумулятор', description: '4000'},
+  ]
+
   return (
     <Container>
       <Row className="mt-3">
@@ -42,6 +50,19 @@ const DevicePage = () => {
           </Card>
         </Col>
       </Row>
+      <div className="d-flex flex-column mt-3">
+        <h1>
+          Характеристики
+        </h1>
+        {description.map((info, index) =>
+          <div
+            key={info.id}
+            style={{background: index % 2 === 0 ? "lightgray" : "transparent", padding: 10}}
+          >
+            {info.title}: {info.description}
+          </div>
+        )}
+      </div>
     </Container>
   )
 }
