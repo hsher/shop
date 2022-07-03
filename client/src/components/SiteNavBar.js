@@ -27,7 +27,7 @@ const SiteNavBar = observer(() => {
             </Button>
             <Button
               variant={"outline-light"}
-              style={{"margin-left": "0.5rem"}}
+              style={{"marginLeft": "0.5rem"}}
               onClick={() => {user.setIsAuth(false); navigate(LOGIN_ROUTE)}}
             >
               Выйти
