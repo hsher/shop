@@ -4,6 +4,13 @@ import {Context} from '../../index';
 
 const CreateDevice = ({show, onHide}) => {
   const {device} = useContext(Context)
+  const [info, setInfo] = useState([])
+  const addInfo = () => {
+    setInfo([...info, {title: '', description: '', number: Date.now()}])
+  }
+  const removeInfo = (number) => {
+    setInfo(info.filter(i => i.number !== number))
+  }
 
   return (
     <Modal
@@ -62,6 +69,38 @@ const CreateDevice = ({show, onHide}) => {
           />
 
           <hr />
+
+          <Button
+            variant={"outline-dark"}
+            onClick={addInfo}
+          >
+            Добавить новое свойство
+          </Button>
+
+          {info.map(i =>
+            <Row className="mt-4" key={i.number}>
+              <Col md={4}>
+                <Form.Control
+                  placeholder="Введите название свойства"
+                />
+              </Col>
+
+              <Col md={4}>
+                <Form.Control
+                  placeholder="Введите описание свойства"
+                />
+              </Col>
+
+              <Col md={4}>
+                <Button
+                  variant={"outline-danger"}
+                  onClick={() => removeInfo(i.number)}
+                >
+                  Удалить
+                </Button>
+              </Col>
+            </Row>
+          )}
         </Form>
       </Modal.Body>
       <Modal.Footer>
