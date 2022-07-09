@@ -12,6 +12,10 @@ import {ADMIN_ROUTE, LOGIN_ROUTE} from '../utils/consts';
 const SiteNavBar = observer(() => {
   const {user} = useContext(Context)
   const navigate = useNavigate()
+  const logOut = () => {
+    user.setUser({})
+    user.setIsAuth(false)
+  }
 
   return (
     <NavBar bg="dark" variant="dark" className="justify-content-between">
@@ -28,14 +32,14 @@ const SiteNavBar = observer(() => {
             <Button
               variant={"outline-light"}
               style={{"marginLeft": "0.5rem"}}
-              onClick={() => {user.setIsAuth(false); navigate(LOGIN_ROUTE)}}
+              onClick={() => logOut()}
             >
               Выйти
             </Button>
           </Nav>
           :
           <Nav style={{color: 'white'}}>
-            <Button variant={"outline-light"} onClick={() => user.setIsAuth(true)}>Авторизация</Button>
+            <Button variant={"outline-light"} onClick={() => navigate(LOGIN_ROUTE)}>Авторизация</Button>
           </Nav>
         }
       </Container>
