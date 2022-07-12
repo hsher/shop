@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Form, Modal} from 'react-bootstrap';
+import {createBrand} from '../../http/deviceAPI';
 
 const CreateBrand = ({show, onHide}) => {
+  const [value, setValue] = useState('');
+  const addBrand = () => {
+    createBrand({name: value}).then(data => setValue(''))
+    onHide();
+  }
+
   return (
     <Modal
       show={show}
@@ -18,6 +25,8 @@ const CreateBrand = ({show, onHide}) => {
         <Form>
           <Form.Control
             placeholder={"Введите название типа"}
+            value={value}
+            onChange={e => setValue(e.target.value)}
           />
         </Form>
       </Modal.Body>
@@ -29,7 +38,7 @@ const CreateBrand = ({show, onHide}) => {
           Закрыть
         </Button>
         <Button
-          onClick={onHide}
+          onClick={addBrand}
           variant={"outline-success"}
         >
           Добавить
