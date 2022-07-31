@@ -7,6 +7,9 @@ export default class DeviceStore {
     this._devices = []
     this._selectedType = {}
     this._selectedBrand = {}
+    this._page = 1
+    this._totalCount = 0
+    this._limit = 3
     makeAutoObservable(this)
   }
 
@@ -23,11 +26,19 @@ export default class DeviceStore {
   }
 
   setSelectedType(type) {
-    return this._selectedType = type
+    this._selectedType = type
   }
 
   setSelectedBrand(brand) {
-    return this._selectedBrand = brand
+    this._selectedBrand = brand
+  }
+
+  setTotalCount(count) {
+    this._totalCount = count
+  }
+
+  setPage(page) {
+    this._page = page
   }
 
   get types() {
@@ -48,5 +59,17 @@ export default class DeviceStore {
 
   get selectedBrand() {
     return this._selectedBrand
+  }
+
+  get totalCount() {
+    return this._totalCount
+  }
+
+  get page() {
+    return this._page
+  }
+
+  get limit() {
+    return this._limit
   }
 }
